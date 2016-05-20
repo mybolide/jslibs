@@ -4,9 +4,9 @@ v1.0版本目前是基于jquery框架，使用时请引入jquery，js版本大�
 1.添加form表单验证  
 
 使用方法： 
-'''javascript 
+｀``javascript 
 <script src="js/form.min.js"></script>  
-'''
+```
 //添加此属性则表示使用ajax方式提交函数  
 role="ajaxform"  
 //验证类型  
