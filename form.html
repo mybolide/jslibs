@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form表单提交验证</title>
+	</head>
+	<body>
+		<p>使用方式<p>
+<pre>
+BOSPACE.formMod.listener("data/test.json", {
+	success: function(data){
+		console.info(data);
+	},
+	vilidateBlurSuccess: function(item){
+		console.info("blur success");
+	},
+	vilidateBlurError: function(item, msg){
+		console.info(item)
+		console.info(msg)
+		console.info("blur error");
+	},
+	vilidateInputSuccess: function(item){
+		console.info("input success");
+	},
+	vilidateInputError: function(item, msg){
+		console.info(item)
+		console.info(msg)
+		console.info("input error");
+	}
+});
+</pre>
+		<form action="data/test.json" method="get" role="ajaxform">
+			<input type="text" name="name" id="name" value="" data-vilidate="number" data-verrormsg="不是数字" data-vtype=""/>
+			<input type="submit" value="submit"/>
+		</form>
+		<form action="data/test2.json" method="get" role="ajaxform">
+			<input type="text" name="name" id="name" value="" />
+			<input type="submit" value="submit"/>
+		</form>
+		<script src="//static.bolzjb.com/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/_Event.js"></script>
+		<script src="js/_Util.js"></script>
+		<script src="js/form.js"></script>
+		<script>
+			BOSPACE.formMod.listener("data/test.json", {
+				success: function(data){
+					console.info(data);
+				},
+				vilidateBlurSuccess: function(item){
+					console.info("blur success");
+				},
+				vilidateBlurError: function(item, msg){
+					console.info(item)
+					console.info(msg)
+					console.info("blur error");
+				},
+				vilidateInputSuccess: function(item){
+					console.info("input success");
+				},
+				vilidateInputError: function(item, msg){
+					console.info(item)
+					console.info(msg)
+					console.info("input error");
+				}
+		});
+		
+		
+		BOSPACE.formMod.listener("data/test2.json", {
+				success: function(data){
+					console.info(data);
+				}
+		});
+		</script>
+	</body>
+</html>
