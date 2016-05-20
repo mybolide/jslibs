@@ -1,15 +1,14 @@
 # jslibs
-v1.0版本目前是基于jquery框架，使用时请引入jquery，js版本大于等于1.7.3即可
+v1.0版本目前是基于jquery框架，使用时请引入jquery，js版本大于等于1.7.3即可  
+后续版本添加纯js版本  
+1.添加form表单验证  
 
-后续版本添加纯js版本
-1.添加form表单验证
-
-使用方法：
-<script src="js/form.min.js"></script>
-//添加此属性则表示使用ajax方式提交函数
-role="ajaxform"
-//验证类型
-data-vilidate="number"
+使用方法：  
+<script src="js/form.min.js"></script>  
+//添加此属性则表示使用ajax方式提交函数  
+role="ajaxform"  
+//验证类型  
+data-vilidate="number"  
 //错误提示
 data-verrormsg="不是数字" 
 //自定义验证正则
