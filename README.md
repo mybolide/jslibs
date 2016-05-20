@@ -25,32 +25,32 @@ js:
  * @param {Object} option 回调函数 回调函数可为空  
  */  
 BOSPACE.formMod.listener("data/test.json", {  
-	success: function(data){  
-		//成功回调  
-		console.info(data);  
-	},  
-	error: function(data){  
-		//失败回调  
-		console.info(data);  
-	},  
-	vilidateBlurSuccess: function(item){  
-		//需要验证字段失去焦点时验证正确  
-		console.info("blur success");  
-	},  
-	vilidateBlurError: function(item, msg){  
-		//需要验证字段失去焦点时验证错误  
-		console.info(item)  
-		console.info(msg)  
-		console.info("blur error");  
-	},  
-	vilidateInputSuccess: function(item){  
-		//需要验证字段输入时验证正确  
-		console.info("input success");  
-	},  
-	vilidateInputError: function(item, msg){  
-		//需要验证字段输入时验证错误  
-		console.info(item)  
-		console.info(msg)  
-		console.info("input error");  
-	}  
+    success: function(data){  
+        //成功回调  
+        console.info(data);  
+    },  
+    error: function(data){  
+        //失败回调  
+        console.info(data);  
+    },  
+    vilidateBlurSuccess: function(item){  
+        //需要验证字段失去焦点时验证正确  
+        console.info("blur success");  
+    },  
+    vilidateBlurError: function(item, msg){  
+        //需要验证字段失去焦点时验证错误  
+        console.info(item)  
+        console.info(msg)  
+        console.info("blur error");  
+    },  
+    vilidateInputSuccess: function(item){  
+        //需要验证字段输入时验证正确  
+        console.info("input success");  
+    },  
+    vilidateInputError: function(item, msg){  
+        //需要验证字段输入时验证错误  
+        console.info(item)  
+        console.info(msg)  
+        console.info("input error");  
+    }  
 });  
