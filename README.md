@@ -16,11 +16,14 @@ data-verrormsg="不是数字"
 //自定义验证正则  
 data-vtype=""  
 注意： 这三个参数可以是多个值，中间用"|"隔开，但是三个参数的值的顺序要对应，即使中间有某一项为空  
-html：  
+html：
+```html   
 <form action="data/test.json" method="get" role="ajaxform">  
 	<input type="text" name="name" id="name" value="" data-vilidate="number" data-verrormsg="不是数字" data-vtype=""/>  
 	<input type="submit" value="submit"/>  
 </form>  
+```
+```javascript 
 js:  
 /**  
  * @param string form 需要监听form表单的action  
@@ -56,3 +59,4 @@ BOSPACE.formMod.listener("data/test.json", {
         console.info("input error");  
     }  
 });  
+```
