@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<script src="js/_Util.js"></script>
+		<script src="js/browserStorage.js"></script>
+		<script type="text/javascript">
+			var vallue = {
+				t:12,
+				dsad:13,
+				admin:"adfadf"
+			}
+			BOSPACE.browserStorage.set({
+				key:"test",
+				value:vallue,
+				path:"/jslibs",
+				domain:"127.0.0.1",
+				expires:10 * 100000
+			});
+			setTimeout(function(){
+				var storageData = BOSPACE.browserStorage.get("test");
+				console.info(storageData)
+				BOSPACE.browserStorage.remove("test");
+			}, 1000)
+			
+		</script>
+	</body>
+</html>

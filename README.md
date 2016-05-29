@@ -1,7 +1,7 @@
 # jslibs
 v1.0版本目前是基于jquery框架，使用时请引入jquery，js版本大于等于1.7.3即可  
 后续版本添加纯js版本  
-1.添加form表单验证  
+## 1.添加form表单验证  form.js
 
 使用方法： 
 ```javascript 
@@ -60,3 +60,44 @@ BOSPACE.formMod.listener("data/test.json", {
     }  
 });  
 ```
+## 2.浏览器缓存 browserStorage.js  
+此工具会优先使用localStorage存储，如果不支持则使用cookie  
+页面引入
+```html   
+<script src="js/browserStorage.min.js"></script>
+```
+
+使用api  
+```javascript 
+var vallue = {
+	t:12,
+	dsad:13,
+	admin:"adfadf"
+}
+/**
+ * 设置存储
+ * @param {Object} obj
+ * @p-config {String} key             存储数据key
+ * @p-config {String} value           存储数据内容
+ * @p-config {String} path            cookie专用，默认为：根目录："/"
+ * @p-config {String} domain          cookie专用，默认为：当前域名 
+ * @p-config {Number/Date} expires    数据的过期时间，可以是数字，单位是毫秒；也可以是日期对象，表示过期时间，
+ *                                    如果未设置expires，或设置不合法时，组件会默认将其设置为30天
+ */
+BOSPACE.browserStorage.set({
+	key:"test",
+	value:vallue,
+	path:"/jslibs",
+	domain:"127.0.0.1",
+	expires:10 * 100000
+});
+/**
+ *获取存储 
+ */
+var storageData = BOSPACE.browserStorage.get("test");
+/**
+ *删除存储
+ */
+BOSPACE.browserStorage.remove("test");
+```
+

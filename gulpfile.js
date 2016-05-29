@@ -28,6 +28,17 @@ gulp.task('formjs', function() {
     .pipe(notify({ message: 'form.js task ok' }));
 });
 
+// 合并、压缩js文件
+gulp.task('storagejs', function() {
+  return gulp.src(['js/_Util.js','js/browserStorage.js'])
+    .pipe(concat('browserStorage.js'))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'))
+    .pipe(notify({ message: 'browserStorage.js task ok' }));
+});
+
 //替换文件路径
 gulp.task('formHtml', function(){
 	gulp.src(['form.html'])
@@ -36,7 +47,15 @@ gulp.task('formHtml', function(){
 		.pipe(notify({ message: 'form.html task ok' }));
 });
 
+//替换文件路径
+gulp.task('browserStorageHtml', function(){
+	gulp.src(['browserStorage.html'])
+		.pipe(replace(/<script src="js\/_Util.js"><\/script>[\r\s\n]*<script src="js\/browserStorage.js"><\/script>/,'<script src="js/browserStorage.min.js"></script>'))
+		.pipe(gulp.dest('dist/'))
+		.pipe(notify({ message: 'browserStorage.html task ok' }));
+});
+
 // 默认任务
 gulp.task('default', function(){
-  gulp.run('lint','formjs','formHtml');
+  gulp.run('lint','storagejs','browserStorageHtml');
 });

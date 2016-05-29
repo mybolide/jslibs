@@ -1,6 +1,7 @@
 /**
  *工具类 
  */
+var BOSPACE = window.$$ = BOSPACE || {};
 BOSPACE.util = {
 	_init: function(){
 		/**
