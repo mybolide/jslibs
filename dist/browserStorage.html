@@ -10,7 +10,7 @@
 				dsad:13,
 				admin:"adfadf"
 			}
-			BOSPACE.browserStorage.set({
+			bo.browserStorage.set({
 				key:"test",
 				value:vallue,
 				path:"/jslibs",
@@ -18,9 +18,9 @@
 				expires:10 * 100000
 			});
 			setTimeout(function(){
-				var storageData = BOSPACE.browserStorage.get("test");
+				var storageData = bo.browserStorage.get("test");
 				console.info(storageData)
-				BOSPACE.browserStorage.remove("test");
+				bo.browserStorage.remove("test");
 			}, 1000)
 			
 		</script>

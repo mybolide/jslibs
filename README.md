@@ -1,6 +1,32 @@
 # jslibs
 v1.0版本目前是基于jquery框架，使用时请引入jquery，js版本大于等于1.7.3即可  
-后续版本添加纯js版本  
+后续版本添加纯js版本
+关于编译的问题
+新添加了deploy.js文件，用于编译js使用方法如下
+```javaScript
+  基于Nodejs的模块化js压缩合并脚本
+  使用uglify-js压缩
+  脚本示例: node deploy.js -f test.js -o test.min.js
+  传入参数：
+    -d debug模式不压缩代码
+	-f 或者无参数: 表示直接压缩文件
+	-m 模块压缩：会分析模块依赖，并导入这些依赖，合并进行压缩
+	-p 文件夹压缩
+	-c 合并压缩
+	-fm 压缩文件并自动添加模块化代码
+	-pm 压缩文件夹并自动添加模块化代码
+	-pcm|-pmc 合并目录并给每个文件添加模块化代码
+	...
+  本libs里 browserStorage.js使用了此方式压缩
+
+  以browserStorage.js为例
+  1.使用bo为明明空间
+  2.bo.js为初始化函数
+  3.函数中可使用bo.require("./util/_type");引入依赖函数
+  4.打包发布，根目录下使用  node deploy.js -m js/browserStorage.js -o dist/js/browserStorage.min.js
+  5.使用api参考下面 2.浏览器缓存 browserStorage.js
+```
+
 ## 1.添加form表单验证  form.js
 
 使用方法： 

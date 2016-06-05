@@ -2,17 +2,18 @@
  *浏览器存储 
  *@author 张金保 
  */
+var type = bo.require("./util/_type");
 (function(root){
 	var _localStorage = {
 		set: function(obj){
-			if(BOSPACE.isObject(obj)){
+			if(type.isObject(obj)){
 				var _setStorageInfo = {},
 					_expires = obj.expires;
 				_setStorageInfo.value = obj.value;
-				if(BOSPACE.isDate(_expires)){
+				if(type.isDate(_expires)){
 					//当过期时间为日期时
 					_setStorageInfo.expires = _expires.getTime();
-				}else if(BOSPACE.isNumber(_expires)){
+				}else if(type.isNumber(_expires)){
 					//当过期时间为数字时
 					_setStorageInfo.expires = _expires + new Date().getTime();
 				}else{
@@ -27,7 +28,7 @@
 		},
 		get: function(key){
 			var _value = window.localStorage.getItem(key);
-			if(BOSPACE.isString(_value)){
+			if(type.isString(_value)){
 				var _obj = JSON.parse(_value);
 				//获取过期时间判断是否过期
 				var _expires = _obj.expires;
@@ -53,13 +54,13 @@
 	        return (new RegExp("^[^\\x00-\\x20\\x7f\\(\\)<>@,;:\\\\\\\"\\[\\]\\?=\\{\\}\\/\\u0080-\\uffff]+\x24")).test(key);
 	    },
 		set: function(obj){
-			if(BOSPACE.isObject(obj) && _cookie._isValidKey(obj.key)){
+			if(type.isObject(obj) && _cookie._isValidKey(obj.key)){
 				var _expires = obj.expires,
 					_thisDate = new Date();
-				if(BOSPACE.isNumber(_expires)){
+				if(type.isNumber(_expires)){
 					//当过期时间为数字时
 					_thisDate.setTime(_thisDate.getTime() + _expires);
-				}else if(BOSPACE.isDate(_expires)){
+				}else if(type.isDate(_expires)){
 					//当过期时间为日期时
 					_thisDate = _expires;
 				}else{
@@ -164,4 +165,4 @@
 	};
 	root.browserStorage = new _init();
 	
-})(window.BOSPACE ? window.BOSPACE :  window.BOSPACE = {});
+})(window.bo ? window.bo :  window.bo = {});
