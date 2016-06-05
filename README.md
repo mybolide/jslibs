@@ -4,6 +4,8 @@
 v1.0版本目前是基于jquery框架，使用时请引入jquery，js版本大于等于1.7.3即可
 后续版本添加纯js版本
 
+全局命名空间：bo
+
 关于编译的问题
 新添加了deploy.js文件，用于编译js使用方法如下
 ```
@@ -23,7 +25,7 @@ v1.0版本目前是基于jquery框架，使用时请引入jquery，js版本大�
   本libs里 browserStorage.js使用了此方式压缩
 
   以browserStorage.js为例
-  1.使用bo为明明空间
+  1.使用bo为命名空间
   2.bo.js为初始化函数
   3.函数中可使用bo.require("./util/_type");引入依赖函数
   4.打包发布，根目录下使用  node deploy.js -m js/browserStorage.js -o dist/js/browserStorage.min.js
@@ -130,3 +132,15 @@ var storageData = bo.browserStorage.get("test");
 bo.browserStorage.remove("test");
 ```
 
+## 3.获取当前js文件路径 getFilePath.js
+此方法用来获取当前js文件的绝对路径
+该方法为内部方法，单某些情况下有此需求故暴露到主命名空间内，此函数源码:js/util/_filePath.js
+页面引入
+```html
+<script src="dist/js/getFilePath.min.js"></script>
+```
+
+使用api
+```javascript
+var filePath =  bo.filePath;
+```
