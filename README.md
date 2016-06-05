@@ -1,15 +1,18 @@
 # jslibs
-v1.0版本目前是基于jquery框架，使用时请引入jquery，js版本大于等于1.7.3即可  
+========================================================================
+
+v1.0版本目前是基于jquery框架，使用时请引入jquery，js版本大于等于1.7.3即可
 后续版本添加纯js版本
+
 关于编译的问题
 新添加了deploy.js文件，用于编译js使用方法如下
-```javaScript
+```
   基于Nodejs的模块化js压缩合并脚本
   使用uglify-js压缩
   脚本示例: node deploy.js -f test.js -o test.min.js
   传入参数：
     -d debug模式不压缩代码
-	-f 或者无参数: 表示直接压缩文件
+    -f 或者无参数: 表示直接压缩文件
 	-m 模块压缩：会分析模块依赖，并导入这些依赖，合并进行压缩
 	-p 文件夹压缩
 	-c 合并压缩
@@ -24,77 +27,77 @@ v1.0版本目前是基于jquery框架，使用时请引入jquery，js版本大�
   2.bo.js为初始化函数
   3.函数中可使用bo.require("./util/_type");引入依赖函数
   4.打包发布，根目录下使用  node deploy.js -m js/browserStorage.js -o dist/js/browserStorage.min.js
-  5.使用api参考下面 2.浏览器缓存 browserStorage.js
+  5.使用api参考下面 第2个浏览器缓存 browserStorage.js
 ```
 
 ## 1.添加form表单验证  form.js
 
-使用方法： 
-```javascript 
-<script src="js/form.min.js"></script>  
+使用方法：
+```html
+<script src="dist/js/form.min.js"></script>
 ```
-//添加此属性则表示使用ajax方式提交函数  
-role="ajaxform"  
-//验证类型  
-data-vilidate="number"  
-//错误提示  
-data-verrormsg="不是数字"   
-//自定义验证正则  
-data-vtype=""  
-注意： 这三个参数可以是多个值，中间用"|"隔开，但是三个参数的值的顺序要对应，即使中间有某一项为空  
+//添加此属性则表示使用ajax方式提交函数
+role="ajaxform"
+//验证类型
+data-vilidate="number"
+//错误提示
+data-verrormsg="不是数字"
+//自定义验证正则
+data-vtype=""
+注意： 这三个参数可以是多个值，中间用"|"隔开，但是三个参数的值的顺序要对应，即使中间有某一项为空
 html：
-```html   
-<form action="data/test.json" method="get" role="ajaxform">  
-	<input type="text" name="name" id="name" value="" data-vilidate="number" data-verrormsg="不是数字" data-vtype=""/>  
-	<input type="submit" value="submit"/>  
-</form>  
+```html
+<form action="data/test.json" method="get" role="ajaxform">
+	<input type="text" name="name" id="name" value="" data-vilidate="number" data-verrormsg="不是数字" data-vtype=""/>
+	<input type="submit" value="submit"/>
+</form>
 ```
-```javascript 
-js:  
-/**  
- * @param string form 需要监听form表单的action  
- * @param {Object} option 回调函数 回调函数可为空  
- */  
+```javascript
+js:
+/**
+ * @param string form 需要监听form表单的action
+ * @param {Object} option 回调函数 回调函数可为空
+ */
 BOSPACE.formMod.listener("data/test.json", {
-    success: function(data){  
-        //成功回调  
-        console.info(data);  
-    },  
-    error: function(data){  
-        //失败回调  
-        console.info(data);  
-    },  
-    vilidateBlurSuccess: function(item){  
-        //需要验证字段失去焦点时验证正确  
-        console.info("blur success");  
-    },  
-    vilidateBlurError: function(item, msg){  
-        //需要验证字段失去焦点时验证错误  
-        console.info(item)  
-        console.info(msg)  
-        console.info("blur error");  
-    },  
-    vilidateInputSuccess: function(item){  
-        //需要验证字段输入时验证正确  
-        console.info("input success");  
-    },  
-    vilidateInputError: function(item, msg){  
-        //需要验证字段输入时验证错误  
-        console.info(item)  
-        console.info(msg)  
-        console.info("input error");  
-    }  
-});  
+    success: function(data){
+        //成功回调
+        console.info(data);
+    },
+    error: function(data){
+        //失败回调
+        console.info(data);
+    },
+    vilidateBlurSuccess: function(item){
+        //需要验证字段失去焦点时验证正确
+        console.info("blur success");
+    },
+    vilidateBlurError: function(item, msg){
+        //需要验证字段失去焦点时验证错误
+        console.info(item)
+        console.info(msg)
+        console.info("blur error");
+    },
+    vilidateInputSuccess: function(item){
+        //需要验证字段输入时验证正确
+        console.info("input success");
+    },
+    vilidateInputError: function(item, msg){
+        //需要验证字段输入时验证错误
+        console.info(item)
+        console.info(msg)
+        console.info("input error");
+    }
+});
 ```
-## 2.浏览器缓存 browserStorage.js  
-此工具会优先使用localStorage存储，如果不支持则使用cookie  
+## 2.浏览器缓存 browserStorage.js
+此工具会优先使用localStorage存储，如果不支持则使用cookie
 页面引入
-```html   
-<script src="js/browserStorage.min.js"></script>
+```html
+<script src="dist/js/browserStorage.min.js"></script>
 ```
 
-使用api  
-```javascript 
+使用api
+```javascript
 var vallue = {
 	t:12,
 	dsad:13,
@@ -106,7 +109,7 @@ var vallue = {
  * @p-config {String} key             存储数据key
  * @p-config {String} value           存储数据内容
  * @p-config {String} path            cookie专用，默认为：根目录："/"
- * @p-config {String} domain          cookie专用，默认为：当前域名 
+ * @p-config {String} domain          cookie专用，默认为：当前域名
  * @p-config {Number/Date} expires    数据的过期时间，可以是数字，单位是毫秒；也可以是日期对象，表示过期时间，
  *                                    如果未设置expires，或设置不合法时，组件会默认将其设置为30天
  */
@@ -118,7 +121,7 @@ bo.browserStorage.set({
 	expires:10 * 100000
 });
 /**
- *获取存储 
+ *获取存储
  */
 var storageData = bo.browserStorage.get("test");
 /**
