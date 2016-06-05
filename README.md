@@ -55,7 +55,7 @@ js:
  * @param string form 需要监听form表单的action  
  * @param {Object} option 回调函数 回调函数可为空  
  */  
-BOSPACE.formMod.listener("data/test.json", {  
+BOSPACE.formMod.listener("data/test.json", {
     success: function(data){  
         //成功回调  
         console.info(data);  
@@ -110,7 +110,7 @@ var vallue = {
  * @p-config {Number/Date} expires    数据的过期时间，可以是数字，单位是毫秒；也可以是日期对象，表示过期时间，
  *                                    如果未设置expires，或设置不合法时，组件会默认将其设置为30天
  */
-BOSPACE.browserStorage.set({
+bo.browserStorage.set({
 	key:"test",
 	value:vallue,
 	path:"/jslibs",
@@ -120,10 +120,10 @@ BOSPACE.browserStorage.set({
 /**
  *获取存储 
  */
-var storageData = BOSPACE.browserStorage.get("test");
+var storageData = bo.browserStorage.get("test");
 /**
  *删除存储
  */
-BOSPACE.browserStorage.remove("test");
+bo.browserStorage.remove("test");
 ```
 
