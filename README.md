@@ -47,6 +47,9 @@ data-verrormsg="不是数字"
 //自定义验证正则
 data-vtype=""
 注意： 这三个参数可以是多个值，中间用"|"隔开，但是三个参数的值的顺序要对应，即使中间有某一项为空
+2016-8-1
+1.修改js/_Util.js 方法 此文件已废弃，不在更新
+2.修改form.js 已知bug
 html：
 ```html
 <form action="data/test.json" method="get" role="ajaxform">

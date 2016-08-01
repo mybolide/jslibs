@@ -28,9 +28,9 @@ gulp.task('formjs', function() {
     .pipe(notify({ message: 'form.js task ok' }));
 });
 
-// 合并、压缩js文件
+//合并、压缩js文件
 gulp.task('storagejs', function() {
-  return gulp.src(['js/_Util.js','js/browserStorage.js'])
+return gulp.src(['js/_Util.js','js/browserStorage.js'])
     .pipe(concat('browserStorage.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(rename({ suffix: '.min' }))
@@ -57,5 +57,5 @@ gulp.task('browserStorageHtml', function(){
 
 // 默认任务
 gulp.task('default', function(){
-  gulp.run('lint','storagejs','browserStorageHtml');
+gulp.run('lint','formjs','formHtml');
 });

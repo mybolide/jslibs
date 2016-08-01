@@ -44,13 +44,7 @@ BOSPACE.util = {
 		var _arry = ["Arguments", "Array", "Boolean", "Date", "Error", "Function", "JSON", "Math", "Number", "Object", "RegExp", "String"];
 		for(var i = 0, l = _arry.length; i < l; i++){
 			var _functionName = "is" + _arry[i];
-			//eval("BOSPACE['"+_functionName+"'] = function(data){return Object.prototype.toString.call(data) == '[object " + _arry[i] + "]'}");
-			BOSPACE['"+_functionName+"'] = (function(type){
-				return function(obj){
-					Object.prototype.toString.call(obj) == '[object " + type + "]';
-				}
-			})(_arry[i])
-			
+            eval("BOSPACE['"+_functionName+"'] = function(data){return Object.prototype.toString.call(data) == '[object " + _arry[i] + "]'}");
 		}
 	}(),
 	
