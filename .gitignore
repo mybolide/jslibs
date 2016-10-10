@@ -1,0 +1,8 @@
+bin-debug
+bin-release
+node_modules
+dist
+.project
+factory
+bk
+bak

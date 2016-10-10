@@ -34,7 +34,10 @@ return gulp.src(['js/_Util.js','js/browserStorage.js'])
     .pipe(concat('browserStorage.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(rename({ suffix: '.min' }))
-    .pipe(uglify())
+    .pipe(uglify({
+     mangle: true,
+     preserveComments: all
+    }))
     .pipe(gulp.dest('dist/js'))
     .pipe(notify({ message: 'browserStorage.js task ok' }));
 });
