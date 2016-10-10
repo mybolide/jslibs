@@ -126,12 +126,21 @@
             var _vField = item.data("vilidate"),
                 _vErrorMsg = item.data("verrormsg"),
                 _vUType = item.data("vtype"),
+                _same = item.data("vsame"),
                 _vType = _vilidate.vType,
                 _val = item.val();
 
             _vField = _vField && _vField.indexOf("|") > -1 ? _vField.split("|") : [_vField];
             _vErrorMsg = _vErrorMsg && _vErrorMsg.indexOf("|") > -1 ? _vErrorMsg.split("|") : [_vErrorMsg];
             _vUType = _vUType && _vUType.indexOf("|") > -1 ? _vUType.split("|") : [_vUType];
+           
+           if(!!_same){
+                var _F = item.parents("form");
+               var _sav =  _F.find("input[name=" + _same+"]").val();
+                _sav == _val && !!_val ? callback(true, "", item) : callback(false, _vErrorMsg[0], item);
+                return;
+            }
+
             _vField && _vField.forEach(function(value, key){
                 _vUType = _vUType && _vUType.length >= _vField.length ? _vUType[key] : "";
                 _vUType = _vUType ||  _vType[value] || "";
@@ -152,5 +161,4 @@
         return new _formMod.listener(action, opt);
     };
     root.formMod = new _init();
-
 })(window.BOSPACE ? window.BOSPACE :  window.BOSPACE = {});
