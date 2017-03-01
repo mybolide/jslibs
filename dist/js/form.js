@@ -143,34 +143,69 @@ BOSPACE.util = {
             });
         },
         formSubmit: function(event){
-            var _this = $(this),
-                _role = _this.attr("role"),
-                _method = _this.attr("method"),
-                _action = _this.attr("action"),
-                _isSubmit = false;
+            var _that = $(this),
+                _role = _that.attr("role"),
+                _method = _that.attr("method"),
+                _action = _that.attr("action"),
+                _isSubmit = true,
+                _showMsg = "";
+			if(!_that.hasClass("submitLodding")){
+				_that.addClass("submitLodding");
+			}else{
+				BOSPACE.eventCenter.fire(_action + "_submit", _that, "请勿重复提交");
+				return false;
+			};
+            var vDatas = _that.find("[data-vilidate]");
             //获取需要验证的字段
-            $("[data-vilidate]").each(function(key, item){
-                var _this = $(item), _temp = false;
+            // _that.find("[data-vilidate]").each(function(key, item){
+            //     var _this = $(item), _temp = false;
+            //     _vilidate.ready(_this, function(isV, emsg, item){
+            //         if(isV){
+            //             BOSPACE.eventCenter.fire(_action + "_inputSuccess", _this);
+            //             BOSPACE.eventCenter.fire(_action + "_blurSuccess", _this);
+            //             BOSPACE.eventCenter.fire(_action + "_submitSuccess", _this);
+            //            // _isSubmit = true;
+            //            _showMsg = "";
+            //             _temp = true;
+            //         }else{
+			// 			_that.removeClass("submitLodding");
+            //             if(!_showMsg)_showMsg = emsg;
+            //             BOSPACE.eventCenter.fire(_action + "_inputError", _this, _showMsg);
+            //             BOSPACE.eventCenter.fire(_action + "_blurError", _this, _showMsg);
+            //             BOSPACE.eventCenter.fire(_action + "_submitError", _this, _showMsg);
+            //             _isSubmit = false;
+            //             _temp = false;
+            //             return false;
+            //         }
+            //     });
+            //     if(!!_temp)return;
+            // });
+            for(var i = 0, l = vDatas.length; i < l; i++){
+                var _this = $(vDatas[i]), _temp = false;
                 _vilidate.ready(_this, function(isV, emsg, item){
                     if(isV){
                         BOSPACE.eventCenter.fire(_action + "_inputSuccess", _this);
                         BOSPACE.eventCenter.fire(_action + "_blurSuccess", _this);
-                        _isSubmit = true;
+                        BOSPACE.eventCenter.fire(_action + "_submitSuccess", _this);
                         _temp = true;
+                        _showMsg = "";
                     }else{
-                        BOSPACE.eventCenter.fire(_action + "_inputError", _this, emsg);
-                        BOSPACE.eventCenter.fire(_action + "_blurError", _this, emsg);
-                        _isSubmit = false;
-                        _temp = false;
-                        return;
+                       _that.removeClass("submitLodding"); 
+                       if(!_showMsg)_showMsg = emsg;
+                       BOSPACE.eventCenter.fire(_action + "_inputError", _this, _showMsg);
+                       BOSPACE.eventCenter.fire(_action + "_blurError", _this, _showMsg);
+                       BOSPACE.eventCenter.fire(_action + "_submitError", _this, _showMsg);
+                       _isSubmit = false;
+                       _temp = false;
+                       return false;
                     }
                 });
-                if(!!_temp)return;
-            });
+                if(!_temp)break;;
+            }
             if(!_isSubmit) return false;
             if(_role == "ajaxform"){
                 event.preventDefault();
-                var _data = _this.serialize();
+                var _data = _that.serialize();
                 $$.util.ajax({
                     url: _action,
                     type: _method,
@@ -179,6 +214,7 @@ BOSPACE.util = {
                         BOSPACE.eventCenter.fire(_action + "_success", data);
                     },
                     error: function(data, xhr, e){
+						_that.removeClass("submitLodding");
                         BOSPACE.eventCenter.fire(_action + "_error", data, xhr, e);
                     }
                 });
@@ -222,6 +258,21 @@ BOSPACE.util = {
                         opt.vilidateInputError.apply({},[item, eMsg]);
                     });
                 }
+                if(opt.submitError){
+                    BOSPACE.eventCenter.addEventListener(action + "_submitError", function(item, eMsg){
+                        opt.submitError.apply({},[item, eMsg]);
+                    });
+                }
+                if(opt.submitSuccess){
+                    BOSPACE.eventCenter.addEventListener(action + "_submitSuccess", function(item, eMsg){
+                        opt.submitSuccess.apply({},[item, eMsg]);
+                    });
+                }
+				if(opt.submit){
+                    BOSPACE.eventCenter.addEventListener(action + "_submit", function(item, eMsg){
+                        opt.submit.apply({},[item, eMsg]);
+                    });
+                }
             }
         }
     };
@@ -237,7 +288,7 @@ BOSPACE.util = {
 
             _vField = _vField && _vField.indexOf("|") > -1 ? _vField.split("|") : [_vField];
             _vErrorMsg = _vErrorMsg && _vErrorMsg.indexOf("|") > -1 ? _vErrorMsg.split("|") : [_vErrorMsg];
-            _vUType = _vUType && _vUType.indexOf("|") > -1 ? _vUType.split("|") : [_vUType];
+            _vUType = _vUType && _vUType.indexOf("||") > -1 ? _vUType.split("||") : [_vUType];
            
            if(!!_same){
                 var _F = item.parents("form");

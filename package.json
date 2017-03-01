@@ -14,7 +14,9 @@
     "gulp-uglify": "^2.0.0",
     "jshint": "^2.9.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mybolide/jslibs.git"

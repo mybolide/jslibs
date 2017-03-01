@@ -49,7 +49,13 @@ data-vtype=""
 注意： 这三个参数可以是多个值，中间用"|"隔开，但是三个参数的值的顺序要对应，即使中间有某一项为空  
 2016-8-1  
 1.修改js/_Util.js 方法 此文件已废弃，不在更新  
-2.修改form.js 已知bug  
+2.修改form.js 已知bug 
+2017-3-1  
+1.添加jsform方法  
+submitError提交验证错误  
+submitSuccess提交验证成功  
+submit提交  
+
 html：
 ```html
 <form action="data/test.json" method="get" role="ajaxform">
