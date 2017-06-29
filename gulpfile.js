@@ -42,6 +42,20 @@ return gulp.src(['js/_Util.js','js/browserStorage.js'])
     .pipe(notify({ message: 'browserStorage.js task ok' }));
 });
 
+//合并、压缩js文件
+gulp.task('lazyLoadImgjs', function() {
+return gulp.src(['js/lazyLoadImg.js'])
+    .pipe(concat('lazyLoadImg.js'))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(uglify({
+     mangle: true,
+     //preserveComments: 'all'
+    }))
+    .pipe(gulp.dest('dist/js'))
+    //.pipe(notify({ message: 'lazyLoadImg.js task ok' }));
+});
+
 //替换文件路径
 gulp.task('formHtml', function(){
 	gulp.src(['form.html'])
@@ -58,7 +72,15 @@ gulp.task('browserStorageHtml', function(){
 		.pipe(notify({ message: 'browserStorage.html task ok' }));
 });
 
+//替换文件路径
+gulp.task('lazyLoadImgHtml', function(){
+	gulp.src(['lazyLoadImg.html'])
+		.pipe(replace(/<script src="js\/lazyLoadImg.js"><\/script>/,'<script src="js/lazyLoadImg.min.js"></script>'))
+		.pipe(gulp.dest('dist/'))
+		//.pipe(notify({ message: 'lazyLoadImg.html task ok' }));
+});
+
 // 默认任务
 gulp.task('default', function(){
-gulp.run('lint','formjs','formHtml');
+gulp.run('lint','lazyLoadImgjs','lazyLoadImgHtml');
 });

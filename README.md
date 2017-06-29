@@ -153,3 +153,16 @@ bo.browserStorage.remove("test");
 ```javascript
 var filePath =  bo.filePath;
 ```
+
+
+## 4.图片懒加载
+当图片出现在当前屏幕中进行加载图片，保证首屏加载速度  
+页面引入
+```html
+<script src="dist/js/lazyLoadImg.min.js"></script>
+```
+
+使用api
+```javascript
+bo.lazyLoad.init($('#imgListContainer'));
+```

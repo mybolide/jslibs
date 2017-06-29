@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片懒加载</title>
+    <style>
+        *{margin:0;padding: 0;}
+        body{
+            padding: 40px;
+        }
+        li{
+            list-style: none;
+        }
+        li img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="imgListContainer">
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+        <li><img src="" alt="" data-origin="data/img/img1.jpg"></li>
+    </ul>
+    <script src="http://static.bolzjb.com/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/lazyLoadImg.js"></script>
+    <script>
+        $(function(){
+            bo.lazyLoad.init($('#imgListContainer'));
+        })
+    </script>
+</body>
+</html>
